@@ -58,4 +58,139 @@ Software Engineers investigating production incidents.
 - Enterprise IAM Platforms
 - Policy Engines
 
-> NOTE: This is an initial committed version. Additional approved PRD sections will be added in follow-up commits without changing the frozen thesis or scope.
+# Functional Requirements
+
+## Domain 1: Alert Management
+
+Alerts are the primary entry point into the IncidentOS workflow.
+
+### Requirements
+
+- Accept authenticated webhook alerts
+- Validate webhook signatures
+- Deduplicate repeated alerts
+- Maintain alert history
+- Support manual alert creation
+
+## Domain 2: Incident Management
+
+Incidents are the central aggregate of the system.
+
+### Severity Model
+
+- P1 Critical
+- P2 High
+- P3 Medium
+- P4 Low
+
+### Lifecycle
+
+Open -> Investigating -> Mitigated -> Resolved -> Closed
+
+### Requirements
+
+- Create incidents from alerts
+- Support manual incident creation
+- Assign incident ownership
+- Change severity
+- Record all state transitions
+- Maintain complete incident history
+- Support resolution and closure workflows
+
+## Domain 3: Evidence Management
+
+Evidence packages represent facts.
+
+### Principles
+
+- Immutable
+- Versioned
+- Traceable
+- Source-attributed
+
+### Requirements
+
+- Generate evidence packages
+- Normalize collected evidence
+- Version evidence packages
+- Preserve package history
+- Inspect evidence packages
+- Track provenance
+- Regenerate evidence packages
+- Record generation failures
+
+## Domain 4: Investigation Management
+
+Investigations represent interpretations derived from evidence.
+
+### Confidence Levels
+
+- Low
+- Medium
+- High
+
+### Requirements
+
+- Generate investigations from evidence
+- Link findings to supporting evidence
+- Generate summaries
+- Generate findings
+- Generate hypotheses
+- Generate recommendations
+- Assign confidence levels
+- Require human approval
+- Support rejection and regeneration
+
+## Domain 5: Knowledge Management
+
+Knowledge improves future investigations.
+
+### Knowledge Types
+
+- Runbooks
+- Postmortems
+- Lessons Learned
+
+### Requirements
+
+- Create postmortems from incidents
+- Create lessons learned from investigations
+- Manage runbooks
+- Search knowledge assets
+- Reference knowledge during investigations
+- Track knowledge usage
+
+## Domain 6: Timeline Management
+
+Timeline is derived from domain events.
+
+### Requirements
+
+- Record incident events
+- Record evidence events
+- Record investigation events
+- Provide chronological timelines
+- Support audit-grade reconstruction
+
+## Domain 7: User Management
+
+### Roles
+
+- Viewer
+- Engineer
+- Admin
+
+### Requirements
+
+- Support RBAC
+- Restrict administrative actions
+- Audit privileged operations
+
+## Domain 8: Auditability
+
+### Requirements
+
+- Record all state transitions
+- Record investigation approvals
+- Record evidence generation activities
+- Preserve audit history
